@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a3ab8d536e4dc44b9109b27158094d, type: 3}
+  m_Name: Short Sword
+  m_EditorClassIdentifier: 
+  WeaponPrefab: {fileID: 4233063044275486726, guid: aad5976b2ac801c4582255ecaadaf2d4, type: 3}
+  _name: Short Sword
+  TypeIndex: 1
+  List:
+  - Type: 0
+    Amount: 15
+  - Type: 1
+    Amount: 0
+  - Type: 2
+    Amount: 0
+  - Type: 3
+    Amount: 0
+  - Type: 4
+    Amount: 0
+  - Type: 5
+    Amount: 10
+  - Type: 6
+    Amount: 0
+  - Type: 7
+    Amount: 0
+  - Type: 8
+    Amount: 0
