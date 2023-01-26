@@ -7,7 +7,7 @@ namespace FightingSim.Assets.Scripts.System
 {
     public interface ISelectable
     {
-        public event Action<GameObject> OnDeath;
+        public event Action OnDeath;
         public void GetSelected();
 
         public void GetDeselected();

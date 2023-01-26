@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Config Manager
   m_EditorClassIdentifier: 
   _dataList:
-  - {fileID: 11400000, guid: dea094a1304b96149b57d848119d2421, type: 2}
+  - {fileID: 11400000, guid: 2d160f2713e131f4bbc43d060d702ad8, type: 2}
+  - {fileID: 11400000, guid: e0672ccaf65586844b2078258f3f7c5b, type: 2}
   - {fileID: 11400000, guid: 0e89cedd65493124aad5856ce4fb25da, type: 2}

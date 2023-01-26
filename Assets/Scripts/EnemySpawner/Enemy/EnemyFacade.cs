@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FightingSim.Assets.Scripts.Infrastructure.Configs;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -16,7 +17,6 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
 
             _transform = transform;
             _currentStats = currentStats;
-
             _currentStats.OnDeath += EnemyDeath;
         }
         public void SetPosition(Vector3 position)
@@ -32,10 +32,11 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
 
         private void DestroySelf()
         {
+            _currentStats.OnDeath -= EnemyDeath;
             UnityEngine.Object.Destroy(_transform.gameObject);
         }
 
-        public class Factory : PlaceholderFactory<EnemyFacade>
+        public class Factory : PlaceholderFactory<EnemyConfig, EnemyFacade>
         {
 
         }

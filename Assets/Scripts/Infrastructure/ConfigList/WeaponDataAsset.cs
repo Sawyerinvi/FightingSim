@@ -1,26 +1,26 @@
-﻿using FightingSim.Assets.Scripts.System;
+﻿using FightingSim.Assets.Scripts.Infrastructure.Configs;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace FightingSim.Assets.Scripts.Infrastructure
+namespace FightingSim.Assets.Scripts.Infrastructure.ConfigList
 {
     [CreateAssetMenu(fileName = "Weapon Data Set", menuName = "Fight Sim/Weapon Data Set")]
     public class WeaponDataAsset : Config
     {
         [SerializeField] private List<WeaponData> _weaponData;
-        
+
 
 #if UNITY_EDITOR
         private void OnValidate()
         {
             var distinctList = _weaponData.Distinct().ToList();
-            if(_weaponData.Count != distinctList.Count)
+            if (_weaponData.Count != distinctList.Count)
             {
                 Debug.LogError("Added non-unic Weapon Asset in Weapon Data Asset");
             }
         }
-        public List<IWeaponConfig> WeaponsData()
+        public List<IWeaponConfig> GetWeaponsData()
         {
             List<IWeaponConfig> list = new List<IWeaponConfig>();
             foreach (var data in _weaponData)
@@ -28,7 +28,7 @@ namespace FightingSim.Assets.Scripts.Infrastructure
                 list.Add(data);
             }
             return list;
-        } 
+        }
 #endif
     }
 }

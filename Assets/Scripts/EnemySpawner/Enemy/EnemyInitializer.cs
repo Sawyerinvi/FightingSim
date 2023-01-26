@@ -1,20 +1,22 @@
-﻿using Zenject;
+﻿using FightingSim.Assets.Scripts.Infrastructure.Configs;
+using Zenject;
 
 namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
 {
     public class EnemyInitializer : IInitializable
     {
-        private const string _enemyPath = "Prefab/NPC/Dummy";
         private readonly DiContainer _container;
+        private readonly EnemyConfig _config;
 
-        public EnemyInitializer(DiContainer container)
+        public EnemyInitializer(DiContainer container, EnemyConfig config)
         {
             _container = container;
+            _config = config;
         }
 
         public void Initialize()
         {
-            _container.InstantiatePrefabResource(_enemyPath);
+            _container.InstantiatePrefab(_config.Prefab);
         }
     }
 }

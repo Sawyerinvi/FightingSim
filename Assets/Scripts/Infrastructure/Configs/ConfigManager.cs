@@ -2,7 +2,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FightingSim.Assets.Scripts.Infrastructure
+namespace FightingSim.Assets.Scripts.Infrastructure.Configs
 {
     [CreateAssetMenu(fileName = "Config Manager", menuName = "Fight Sim/Config Manager")]
     public class ConfigManager : ScriptableObject

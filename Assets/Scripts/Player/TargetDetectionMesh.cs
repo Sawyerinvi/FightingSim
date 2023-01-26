@@ -1,4 +1,4 @@
-using FightingSim.Assets.Scripts.Infrastructure;
+using FightingSim.Assets.Scripts.Infrastructure.Configs;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using FightingSim.Assets.Scripts.Weapons;
 using System.Linq;
-using FightingSim.Assets.Scripts.System;
 using System.Reflection;
-using FightingSim.Assets.Scripts.Weapons.WeaponSubcontainer;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace FightingSim.Assets.Scripts.Infrastructure
+namespace FightingSim.Assets.Scripts.Infrastructure.Configs
 {
-    [CreateAssetMenu(fileName = "Data", menuName = "Fight Sim/Weapons")]
+    [CreateAssetMenu(fileName = "Data", menuName = "Fight Sim/Config/Weapon Data")]
     public class WeaponData : ScriptableObject, IWeaponConfig
     {
 
         public GameObject Prefab => WeaponPrefab;
+        public Transform WeaponTransform { get; set; }
         public string WeaponName => _name;
+        public GameObject WeaponPrefab;
+        public string _name = "New Weapon";
+        public int TypeIndex;
+        public List<WeaponDamageType> List = new List<WeaponDamageType>();
+
+
 
         [Serializable]
         public class WeaponDamageType
@@ -26,11 +31,6 @@ namespace FightingSim.Assets.Scripts.Infrastructure
             public float Amount;
         }
 
-        public GameObject WeaponPrefab;
-
-        public string _name = "New Weapon";
-        public int TypeIndex;
-        public List<WeaponDamageType> List = new List<WeaponDamageType>();
         public Damage GetWeaponBaseDamage()
         {
             var dmg = new Damage();
@@ -40,6 +40,8 @@ namespace FightingSim.Assets.Scripts.Infrastructure
             }
             return dmg;
         }
+
+
     }
 
 
@@ -68,7 +70,7 @@ namespace FightingSim.Assets.Scripts.Infrastructure
                 script.List[i].Amount = EditorGUILayout.FloatField(script.List[i].Amount, GUILayout.Width(75f));
                 EditorGUILayout.EndHorizontal();
             }
-            script.WeaponPrefab = (GameObject)EditorGUILayout.ObjectField("Weapon Collider:", script.WeaponPrefab, typeof(GameObject), false);            
+            script.WeaponPrefab = (GameObject)EditorGUILayout.ObjectField("Weapon Collider:", script.WeaponPrefab, typeof(GameObject), false);
         }
 
         private bool CheckForChanges()
@@ -110,7 +112,7 @@ namespace FightingSim.Assets.Scripts.Infrastructure
             return newList;
         }
 
-        
+
 
     }
 }

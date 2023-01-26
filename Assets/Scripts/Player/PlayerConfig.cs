@@ -1,4 +1,4 @@
-﻿using FightingSim.Assets.Scripts.Infrastructure;
+﻿using FightingSim.Assets.Scripts.Infrastructure.Configs;
 using UnityEngine;
 
 namespace FightingSim.Assets.Scripts.Player

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace FightingSim.Assets.Scripts.Player
 {
 
-    public class TargetSelect : ITargetSwitchable
+    public class TargetSelect
     {
         private List<ISelectable> _targetList = new List<ISelectable>();
 
@@ -19,7 +19,7 @@ namespace FightingSim.Assets.Scripts.Player
                 selectable.GetSelected();
                 _targetList.Add(selectable);
                 OnAddingTarget(_targetList);
-                selectable.OnDeath += DeselectTarget;
+                selectable.OnDeath += (() => DeselectTarget(target));
             }
 
         }
@@ -33,6 +33,5 @@ namespace FightingSim.Assets.Scripts.Player
                 OnAddingTarget(_targetList);
             }
         }
-        
     }
 }

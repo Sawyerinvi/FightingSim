@@ -1,11 +1,11 @@
+using FightingSim.Assets.Scripts.Infrastructure.Configs;
 using FightingSim.Assets.Scripts.Player;
-using FightingSim.Assets.Scripts.System;
 using UnityEngine;
 using Zenject;
 
 namespace FightingSim.Assets.Scripts.Weapons.WeaponSubcontainer
 {
-    public class Weapon : IInitializable
+    public class Weapon
     {
         private Transform _transform;
         private string _name;
@@ -34,12 +34,8 @@ namespace FightingSim.Assets.Scripts.Weapons.WeaponSubcontainer
             _name = _weaponData.WeaponName;
         }
 
-        public void Initialize()
-        {
-            Debug.Log("Initialize");
-        }
 
-        public class Factory : PlaceholderFactory<Weapon>
+        public class Factory : PlaceholderFactory<IWeaponConfig, Weapon>
         {
 
         }

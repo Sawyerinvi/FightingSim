@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3352d9b2116238342b4d151314277522, type: 3}
-  m_Name: Enemy Config
+  m_Script: {fileID: 11500000, guid: ef6a85c11fdcae34f89e7e6428d7fd73, type: 3}
+  m_Name: Enemy Data Set
   m_EditorClassIdentifier: 
-  _maxHealth: 50
+  _enemyConfig:
+  - {fileID: 11400000, guid: ae5bb41fde3e4ff42847e5da1d5c3c07, type: 2}
+  - {fileID: 11400000, guid: dea094a1304b96149b57d848119d2421, type: 2}

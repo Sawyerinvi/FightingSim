@@ -4,8 +4,8 @@ using FightingSim.Assets.Scripts.Player;
 using System.Collections.Generic;
 using TMPro;
 using Zenject;
-using FightingSim.Assets.Scripts.Infrastructure;
-using FightingSim.Assets.Scripts.System;
+using FightingSim.Assets.Scripts.Infrastructure.Configs;
+using FightingSim.Assets.Scripts.Infrastructure.ConfigList;
 
 namespace FightingSim.Assets.Scripts.UI.PlayerUI
 {
@@ -22,14 +22,14 @@ namespace FightingSim.Assets.Scripts.UI.PlayerUI
         private List<IWeaponConfig> _weaponList;
 
         [Inject]
-        public void Construct(PlayerFacade player, WeaponDataAsset weaponAsset)
+        public void Construct(PlayerFacade player, ConfigManager configManager)
         {
             _playerWeaponInventory = player.PlayerWeaponInventory;
-            _weaponAsset = weaponAsset;
+            _weaponAsset = configManager.GetConfig<WeaponDataAsset>();
         }
         private void Awake()
         {
-            _weaponList = _weaponAsset.WeaponsData();
+            _weaponList = _weaponAsset.GetWeaponsData();
             foreach (var weapon in _weaponList)
             {
                 _configByName.Add(weapon.WeaponName, weapon);

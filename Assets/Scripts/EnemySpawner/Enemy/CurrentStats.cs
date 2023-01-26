@@ -1,4 +1,4 @@
-using FightingSim.Assets.Scripts.Infrastructure;
+using FightingSim.Assets.Scripts.Infrastructure.Configs;
 using FightingSim.Assets.Scripts.Weapons;
 using FightingSim.Assets.Scripts.Weapons.WeaponSubcontainer;
 using System;
@@ -23,9 +23,9 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
         public event Action OnHealthChanged;
         public event Action OnDeath;
 
-        public CurrentStats(ConfigManager config)
+        public CurrentStats(EnemyConfig config)
         {
-            _config = config.GetConfig<EnemyConfig>();
+            _config = config;
         }
 
         public void AddSourceOfResistance(DamageResistances resistance)

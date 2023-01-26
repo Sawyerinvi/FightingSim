@@ -11,7 +11,7 @@ namespace FightingSim.Assets.Scripts.Player
         [Inject]
         private PlayerWeaponInventory _weaponInventory;
 
-        public ITargetSwitchable PlayerTargets => _targetSelect;
+        public TargetSelect PlayerTargets => _targetSelect;
         public PlayerWeaponInventory PlayerWeaponInventory => _weaponInventory;        
 
     }

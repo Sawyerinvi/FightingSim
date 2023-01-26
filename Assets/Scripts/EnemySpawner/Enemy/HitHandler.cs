@@ -14,7 +14,7 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
         private string _name;
 
         public string Name => _name;
-        public event Action<GameObject> OnDeath;
+        public event Action OnDeath;
 
         [Inject]
         public void Construct(string name, CurrentStats currentStats)
@@ -29,7 +29,7 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
         }
         private void DeathHandler()
         {
-            OnDeath?.Invoke(gameObject);
+            OnDeath?.Invoke();
         }
 
         public void GetSelected()

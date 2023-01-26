@@ -11,7 +11,7 @@ namespace FightingSim.Assets.Scripts.UI.PlayerUI
     public class CurrentTargets : MonoBehaviour
     {
         [SerializeField] private TMP_Text _targetList;
-        private ITargetSwitchable _target;
+        private TargetSelect _target;
 
         [Inject]
         public void Construct(PlayerFacade player)
