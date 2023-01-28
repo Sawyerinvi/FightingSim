@@ -73,7 +73,7 @@ namespace FightingSim.Assets.Scripts.EnemySpawner
             Collider[] hits = Physics.OverlapSphere(origin,  _playerCheckOverlapRadius);
             foreach (var hit in hits)
             {
-                if (hit.gameObject.TryGetComponent<PlayerComponent>(out var _))
+                if (hit.gameObject.TryGetComponent<PlayerCollisionFacade>(out var _))
                 {
                     return true;
                 }

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 50
   _prefab: {fileID: 5483319746319323331, guid: 37194ef62c241ee4ab767c03189f51f8, type: 3}
+  _animatorController: {fileID: 9100000, guid: 151cc6ffac833594d9d7ae4e4199d8eb, type: 2}

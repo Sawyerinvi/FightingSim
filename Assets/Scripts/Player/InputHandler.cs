@@ -41,7 +41,7 @@ namespace FightingSim.Assets.Scripts.Player
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _stationBehaviour.Attack();
+                _stationBehaviour.AttackStart();
             }
         }
     }

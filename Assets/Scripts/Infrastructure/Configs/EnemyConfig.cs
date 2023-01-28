@@ -7,9 +7,14 @@ namespace FightingSim.Assets.Scripts.Infrastructure.Configs
     {
         [SerializeField] private float _maxHealth;
         [SerializeField] private GameObject _prefab;
+        [SerializeField] private RuntimeAnimatorController _animatorController;
+        [SerializeField] private float _sphereSearchTimer;
+        [SerializeField] private float _sphereSearchRadius;
 
         public float MaxHealth => _maxHealth;
         public GameObject Prefab => _prefab;
+        public RuntimeAnimatorController AnimatorController => _animatorController;
+        public float OverlapshpereTime => _sphereSearchTimer;
+        public float SphereSearchRadius => _sphereSearchRadius;
     }
-
 }

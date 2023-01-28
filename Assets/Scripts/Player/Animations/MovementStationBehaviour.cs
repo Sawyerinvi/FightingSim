@@ -24,9 +24,13 @@ namespace FightingSim.Assets.Scripts.Player.Animations
             };
             SwitchState<IdleState>();
         }
-        public void Attack()
+        public void AttackStart()
         {
             _currentState.AttackStart();
+        }
+        public void AttackEnd()
+        {
+            _currentState.AttackEnd();
         }
         public void Idle()
         {

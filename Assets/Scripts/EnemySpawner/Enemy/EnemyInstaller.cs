@@ -1,5 +1,7 @@
-﻿using FightingSim.Assets.Scripts.Infrastructure.Configs;
+﻿using FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations;
+using FightingSim.Assets.Scripts.Infrastructure.Configs;
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
@@ -11,11 +13,17 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
         public override void InstallBindings()
         {
             Container.Bind<EnemyConfig>().FromInstance(_config).AsSingle();
-            Container.Bind<Transform>().FromComponentOnRoot().AsSingle();
             Container.BindInterfacesAndSelfTo<CurrentStats>().AsSingle();
             Container.Bind<EnemyFacade>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyInitializer>().AsSingle();
-            
+            Container.BindInterfacesAndSelfTo<EnemyNavigation>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MovementStationBehaviour>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EnemyControl>().AsSingle();
+
+            Container.Bind<Transform>().FromComponentOnRoot().AsSingle();
+            Container.Bind<NavMeshAgent>().FromComponentOnRoot().AsSingle();
+            Container.Bind<Animator>().FromComponentOnRoot().AsSingle();
+            Container.BindInterfacesAndSelfTo<HitHandler>().FromComponentOnRoot();
         }
     }
 }
