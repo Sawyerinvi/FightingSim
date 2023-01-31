@@ -21,7 +21,7 @@ namespace FightingSim.Assets.Scripts.EnemySpawner
 
         private float _playerCheckOverlapRadius = 2f;
         private int _timer = 5;
-        private int _enemyAmount = 10;
+        private int _enemyAmount = 1;
 
         public Spawner(EnemyFacade.Factory factory, SpawnerContent spawnerContent, EnemySpawnPoints spawnPoints, AsyncProcessor processor, ConfigManager configManager)
         {
@@ -70,7 +70,7 @@ namespace FightingSim.Assets.Scripts.EnemySpawner
 
         private bool CheckForPlayer(Vector3 origin)
         {
-            Collider[] hits = Physics.OverlapSphere(origin,  _playerCheckOverlapRadius);
+            Collider[] hits = Physics.OverlapSphere(origin, _playerCheckOverlapRadius);
             foreach (var hit in hits)
             {
                 if (hit.gameObject.TryGetComponent<PlayerCollisionFacade>(out var _))

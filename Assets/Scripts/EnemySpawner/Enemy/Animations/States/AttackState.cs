@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FightingSim.Assets.Scripts.Infrastructure.Configs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States
 {
     class AttackState : EnemyBaseState
     {
-        public AttackState(IEnemyStateSwitcher stateSwitcher) : base(stateSwitcher)
+        public AttackState(IEnemyStateSwitcher stateSwitcher, EnemyConfig config, EnemyController animationController) : base(stateSwitcher, config, animationController)
         {
         }
 

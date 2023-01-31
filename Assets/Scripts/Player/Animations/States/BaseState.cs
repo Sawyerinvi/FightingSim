@@ -6,7 +6,7 @@ namespace FightingSim.Assets.Scripts.Player.Animations.States
     {
         protected readonly PlayerControl _control;
         protected readonly IPlayerStateSwitcher _stateSwitcher;
-        protected readonly AnimationController _animationController;
+        protected readonly PlayerAnimationController _animationController;
 
         protected BaseState(PlayerControl control, IPlayerStateSwitcher stateSwitcher)
         {

@@ -17,7 +17,7 @@ namespace FightingSim.Assets.Scripts.Player
         private readonly PlayerConfig _config;
         private readonly Transform _transform;
         private readonly Camera _camera;
-        private readonly AnimationController _animationController;
+        private readonly PlayerAnimationController _animationController;
         PlayerWeaponInventory _weaponInventory;
         private float _speed;
 
@@ -25,7 +25,7 @@ namespace FightingSim.Assets.Scripts.Player
         public event Action OnAttackEnd;
 
 
-        public PlayerControl(ConfigManager config, Transform transform, Camera camera, AnimationController animationController, PlayerWeaponInventory weaponInventory)
+        public PlayerControl(ConfigManager config, Transform transform, Camera camera, PlayerAnimationController animationController, PlayerWeaponInventory weaponInventory)
         {
             _config = config.GetConfig<PlayerConfig>();
             _transform = transform;

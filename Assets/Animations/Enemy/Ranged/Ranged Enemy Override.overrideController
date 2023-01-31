@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ranged Enemy Override
+  m_Controller: {fileID: 9100000, guid: be1309c72877c98439e7b3e74775d789, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5590d5a852e868c4fb1897037b1c6e2b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 73bc999eda2f01544957608bfd6a2a8b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a40a81fa5c9bd1a4aa3b3574850349d5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8516df37f60799c4e8d7104799e47cf0, type: 2}

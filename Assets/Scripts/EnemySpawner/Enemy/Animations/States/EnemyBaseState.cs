@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FightingSim.Assets.Scripts.Infrastructure.Configs;
 
 namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States
 {
     public abstract class EnemyBaseState
     {
-        private readonly IEnemyStateSwitcher _stateSwitcher;
+        protected readonly IEnemyStateSwitcher _stateSwitcher;
+        protected readonly EnemyConfig _config;
+        protected readonly EnemyController _enemyController;
 
-        protected EnemyBaseState(IEnemyStateSwitcher stateSwitcher)
+        protected EnemyBaseState(IEnemyStateSwitcher stateSwitcher, EnemyConfig config, EnemyController animationController)
         {
             _stateSwitcher = stateSwitcher;
+            _config = config;
+            _enemyController = animationController;
         }
+
 
         public abstract void StartAttack();
         public abstract void EndAttack();

@@ -11,8 +11,8 @@ namespace FightingSim.Assets.Scripts.Player.Animations
         private const string _attackAnimationName = "Attack Animation";
         private const string _idleAnimationName = "Player Idle";
 
-        public readonly AnimationClip Attack;
-        public readonly AnimationClip Idle;
+        public AnimationClip Attack { get; private set;}
+        public AnimationClip Idle { get; private set; }
 
         public PlayerAnimationSet(Animator animator)
         {

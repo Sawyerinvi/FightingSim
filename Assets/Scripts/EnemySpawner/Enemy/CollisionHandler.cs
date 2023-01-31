@@ -16,7 +16,7 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
 
         private void OnTriggerEnter(Collider collider)
         {
-            if (collider.gameObject.TryGetComponent<WeaponCollider>(out var colliderHandler))
+             if (collider.gameObject.TryGetComponent<WeaponCollider>(out var colliderHandler))
             {
                 _currentStats.TakeDamage(colliderHandler.Weapon);
             }

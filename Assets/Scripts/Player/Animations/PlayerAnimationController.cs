@@ -7,18 +7,17 @@ using FightingSim.Assets.Scripts.Infrastructure;
 
 namespace FightingSim.Assets.Scripts.Player.Animations
 {
-    public class AnimationController
+    public class PlayerAnimationController
     {
         private Animator _animator;
-        private PlayerAnimationSet _animationSet;
         private AsyncProcessor _processor;
+        private readonly PlayerAnimationSet _playerAnimationSet;
 
-
-        public AnimationController(Animator animator, PlayerAnimationSet animationSet, AsyncProcessor processor)
+        public PlayerAnimationController(Animator animator, AsyncProcessor processor, PlayerAnimationSet playerAnimationSet)
         {
             _animator = animator;
-            _animationSet = animationSet;
             _processor = processor;
+            _playerAnimationSet = playerAnimationSet;
         }
         public void Attack(Action onEndCallback)
         {
@@ -26,9 +25,9 @@ namespace FightingSim.Assets.Scripts.Player.Animations
         }
         private IEnumerator AttackAnimation(Action callback)
         {
-            _animator.Play(_animationSet.Attack.name);
-            yield return new WaitForSeconds(_animationSet.Attack.length);
-            _animator.Play(_animationSet.Idle.name);
+            _animator.Play(_playerAnimationSet.Attack.name);
+            yield return new WaitForSeconds(_playerAnimationSet.Attack.length);
+            _animator.Play(_playerAnimationSet.Idle.name);
             callback();
         }
 

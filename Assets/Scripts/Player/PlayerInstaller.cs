@@ -9,14 +9,14 @@ namespace FightingSim.Assets.Scripts.Player
         public override void InstallBindings()
         {
             Container.Bind<PlayerFacade>().AsSingle();
-            Container.Bind<PlayerAnimationSet>().AsSingle();
             Container.Bind<PlayerWeaponInventory>().AsSingle();
             Container.BindInterfacesAndSelfTo<TargetSelect>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerControl>().AsSingle();
             Container.BindInterfacesAndSelfTo<CameraMovement>().AsSingle();
-            Container.Bind<AnimationController>().AsSingle();
+            Container.Bind<PlayerAnimationController>().AsSingle();
             Container.Bind<MovementStationBehaviour>().AsSingle();
             Container.BindInterfacesAndSelfTo<InputHandler>().AsSingle();
+            Container.Bind<PlayerAnimationSet>().AsSingle();
 
             Container.Bind<Animator>().FromComponentOnRoot().AsSingle();
             Container.Bind<Rigidbody>().FromComponentOnRoot().AsSingle();

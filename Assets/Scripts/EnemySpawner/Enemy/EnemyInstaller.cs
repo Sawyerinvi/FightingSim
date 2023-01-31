@@ -12,13 +12,14 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
         private EnemyConfig _config;
         public override void InstallBindings()
         {
-            Container.Bind<EnemyConfig>().FromInstance(_config).AsSingle();
-            Container.BindInterfacesAndSelfTo<CurrentStats>().AsSingle();
             Container.Bind<EnemyFacade>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyInitializer>().AsSingle();
+            Container.Bind<EnemyConfig>().FromInstance(_config).AsSingle();
+            Container.BindInterfacesAndSelfTo<CurrentStats>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyNavigation>().AsSingle();
-            Container.BindInterfacesAndSelfTo<MovementStationBehaviour>().AsSingle();
-            Container.BindInterfacesAndSelfTo<EnemyControl>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EnemyBehaviourStation>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EnemyController>().AsSingle();
+            Container.Bind<EnemyAnimationController>().AsSingle();
 
             Container.Bind<Transform>().FromComponentOnRoot().AsSingle();
             Container.Bind<NavMeshAgent>().FromComponentOnRoot().AsSingle();

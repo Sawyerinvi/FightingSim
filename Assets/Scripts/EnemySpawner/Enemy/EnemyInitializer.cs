@@ -20,7 +20,6 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
         public void Initialize()
         {
             var obj = _container.InstantiatePrefab(_config.Prefab);
-            _animator.runtimeAnimatorController = _config.AnimatorController;
         }
     }
 }

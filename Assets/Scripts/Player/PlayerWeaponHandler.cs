@@ -8,11 +8,11 @@ namespace FightingSim.Assets.Scripts.Player
     public class PlayerWeaponHandler : MonoBehaviour
     {
         private PlayerControl _playerControl;
-        private AnimationController _animationController;
+        private PlayerAnimationController _animationController;
         private PlayerWeaponInventory _weaponInventory;
 
         [Inject]
-        public void Construct(AnimationController animationController, PlayerControl playerControl, PlayerWeaponInventory weaponInventory)
+        public void Construct(PlayerAnimationController animationController, PlayerControl playerControl, PlayerWeaponInventory weaponInventory)
         {
             _weaponInventory = weaponInventory;
             weaponInventory.WeaponHandlerTransform = transform;

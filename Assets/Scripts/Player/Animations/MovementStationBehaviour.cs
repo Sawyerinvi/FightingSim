@@ -7,11 +7,11 @@ namespace FightingSim.Assets.Scripts.Player.Animations
     public class MovementStationBehaviour : IPlayerStateSwitcher
     {
         private readonly PlayerControl _control;
-        private readonly AnimationController _animationController;
+        private readonly PlayerAnimationController _animationController;
         private BaseState _currentState;
         private List<BaseState> _allStates;
 
-        public MovementStationBehaviour(PlayerControl control, AnimationController animationController)
+        public MovementStationBehaviour(PlayerControl control, PlayerAnimationController animationController)
         {
             _control = control;
             _animationController = animationController;
