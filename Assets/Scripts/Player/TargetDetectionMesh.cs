@@ -12,18 +12,22 @@ namespace FightingSim.Assets.Scripts.Player
         private PlayerConfig _config;
         private TargetSelect _target;
         private SphereCollider _targetDetection;
+        private Transform _transform;
 
         private float _targetDetectionRadius;
 
         [Inject]
-        public void Construct(ConfigManager config, TargetSelect target)
+        public void Construct(ConfigManager config, TargetSelect target, Transform transform)
         {
             _config = config.GetConfig<PlayerConfig>();
             _targetDetectionRadius = _config.TargetDetectionRadius;
             _target = target;
+            _transform = transform;
+            
         }
         private void Awake()
         {
+            transform.parent = null;
             _targetDetection = GetComponent<SphereCollider>();
             _targetDetection.transform.localScale = Vector3.right * _targetDetectionRadius;
         }
@@ -35,6 +39,10 @@ namespace FightingSim.Assets.Scripts.Player
         private void OnTriggerExit(Collider other)
         {
             _target.DeselectTarget(other.gameObject);
+        }
+        private void Update()
+        {
+            transform.position = _transform.position;
         }
 
 

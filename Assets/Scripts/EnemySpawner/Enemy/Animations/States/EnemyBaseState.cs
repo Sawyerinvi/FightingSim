@@ -4,22 +4,20 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States
 {
     public abstract class EnemyBaseState
     {
-        protected readonly IEnemyStateSwitcher _stateSwitcher;
-        protected readonly EnemyConfig _config;
+        protected readonly IStateSwitcher _stateSwitcher;
         protected readonly EnemyController _enemyController;
 
-        protected EnemyBaseState(IEnemyStateSwitcher stateSwitcher, EnemyConfig config, EnemyController animationController)
+        public EnemyBaseState(IStateSwitcher stateSwitcher, EnemyController enemyController)
         {
             _stateSwitcher = stateSwitcher;
-            _config = config;
-            _enemyController = animationController;
+            _enemyController = enemyController;
         }
 
-
+        public abstract void Move();
+        public abstract void Idle();
+        public abstract void Rotate();
         public abstract void StartAttack();
         public abstract void EndAttack();
-        public abstract void MoveToAttack();
-        public abstract void Idle();
-        public abstract void Roam();
+        
     }
 }

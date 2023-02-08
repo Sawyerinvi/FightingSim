@@ -1,5 +1,4 @@
-﻿using FightingSim.Assets.Scripts.System;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace FightingSim.Assets.Scripts.Player
@@ -12,10 +11,12 @@ namespace FightingSim.Assets.Scripts.Player
         private PlayerWeaponInventory _weaponInventory;
         [Inject]
         private Transform _transform;
+        [Inject]
+        private CurrentStats _currentStats;
 
         public TargetSelect PlayerTargets => _targetSelect;
         public PlayerWeaponInventory PlayerWeaponInventory => _weaponInventory;
         public Vector3 PlayerPosition => _transform.position;
-
+        public CurrentStats CurrentStats => _currentStats;
     }
 }

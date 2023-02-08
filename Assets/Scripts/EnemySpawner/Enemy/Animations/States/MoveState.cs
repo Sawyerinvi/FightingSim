@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States
 {
-    class MoveToAttackState : EnemyBaseState
+    class MoveState : EnemyBaseState
     {
-        public MoveToAttackState(IEnemyStateSwitcher stateSwitcher, EnemyConfig config, EnemyController animationController) : base(stateSwitcher, config, animationController)
+        public MoveState(IStateSwitcher stateSwitcher, EnemyController enemyController) : base(stateSwitcher, enemyController)
         {
         }
 
-        public override void EndAttack()
+        public override void Move()
         {
-            _stateSwitcher.SwitchState<IdleState>();
+            _enemyController.MoveToPlayer();
         }
 
         public override void Idle()
@@ -23,14 +23,11 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States
             _enemyController.Idle();
             _stateSwitcher.SwitchState<IdleState>();
         }
-
-        public override void MoveToAttack()
+        
+        public override void Rotate()
         {
-            _enemyController.MoveToPlayer();
-        }
-
-        public override void Roam()
-        {
+            _enemyController.RotateToPlayer();
+            _stateSwitcher.SwitchState<RotateState>();
         }
 
         public override void StartAttack()
@@ -38,5 +35,11 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States
             _enemyController.Attack(EndAttack);
             _stateSwitcher.SwitchState<AttackState>();
         }
+        public override void EndAttack()
+        {
+
+            _stateSwitcher.SwitchState<IdleState>();
+        }
+        
     }
 }

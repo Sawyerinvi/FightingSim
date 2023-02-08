@@ -1,34 +1,25 @@
-﻿using FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations;
-using FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States;
-using FightingSim.Assets.Scripts.Infrastructure.Configs;
-using FightingSim.Assets.Scripts.Player;
+﻿using FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
 {
-    public class EnemyBehaviourStation : IEnemyStateSwitcher
+    public class EnemyBehaviourStation : IStateSwitcher
     {
         private EnemyBaseState _currentState;
         private List<EnemyBaseState> _allStates;
-        private readonly Transform _transform;
-        private readonly PlayerFacade _player;
-        private readonly EnemyConfig _config;
         private readonly EnemyController _enemyController;
 
-        public EnemyBehaviourStation(Transform transform, PlayerFacade player, EnemyConfig config, EnemyController enemyController)
+        public EnemyBehaviourStation(EnemyController enemyController)
         {
-            _transform = transform;
-            _player = player;
-            _config = config;
             _enemyController = enemyController;
-            _allStates = new List<EnemyBaseState>()
-            {
-                new AttackState(this, _config, _enemyController),
-                new IdleState(this, _config, _enemyController),
-                new RoamState(this, _config, _enemyController),
-                new MoveToAttackState(this, _config, _enemyController)
+            _allStates = new List<EnemyBaseState>{
+                new IdleState(this, _enemyController),
+                new AttackState(this, _enemyController),
+                new RotateState(this, _enemyController),
+                new MoveState(this, _enemyController)
             };
             SwitchState<IdleState>();
         }
@@ -41,13 +32,13 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
         {
             _currentState.StartAttack();
         }
-        public void MoveToAttack()
+        public void Move()
         {
-            _currentState.MoveToAttack();
+            _currentState.Move();
         }
-        public void Roam()
+        public void Rotate()
         {
-            _currentState.Roam();
+            _currentState.Rotate();
         }
 
         public void SwitchState<T>() where T : EnemyBaseState

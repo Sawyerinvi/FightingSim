@@ -1,18 +1,31 @@
 ﻿using FightingSim.Assets.Scripts.Infrastructure.Configs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FightingSim.Assets.Scripts.Player;
+using UnityEngine;
 
 namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States
 {
     class IdleState : EnemyBaseState
     {
-        public IdleState(IEnemyStateSwitcher stateSwitcher, EnemyConfig config, EnemyController animationController) : base(stateSwitcher, config, animationController)
+        public IdleState(IStateSwitcher stateSwitcher, EnemyController enemyController) : base(stateSwitcher, enemyController)
         {
         }
 
+        public override void Move()
+        {
+            _enemyController.MoveToPlayer();
+            _stateSwitcher.SwitchState<MoveState>();
+        }
+
+        public override void Idle()
+        {
+            _enemyController.Idle();
+        }
+
+        public override void Rotate()
+        {
+            _enemyController.RotateToPlayer();
+            _stateSwitcher.SwitchState<RotateState>();
+        }
         public override void StartAttack()
         {
             _enemyController.Attack(EndAttack);
@@ -22,20 +35,6 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States
         public override void EndAttack()
         {
             _stateSwitcher.SwitchState<IdleState>();
-        }
-
-        public override void MoveToAttack()
-        {
-            _enemyController.MoveToPlayer();
-        }
-
-        public override void Idle()
-        {
-            _enemyController.Idle();
-        }
-
-        public override void Roam()
-        {
         }
     }
 }

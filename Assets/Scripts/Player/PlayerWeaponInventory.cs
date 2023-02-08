@@ -27,6 +27,7 @@ namespace FightingSim.Assets.Scripts.Player
             {
                 weaponConfig.WeaponTransform = WeaponHandlerTransform;
                 var newWeapon = _factory.Create(weaponConfig);
+                newWeapon.IsEnemyDamagable = true;
                 _availableWeapons.Add(newWeapon);
                 newWeapon.SetActive(false);
                 SetActiveWeapon(newWeapon);

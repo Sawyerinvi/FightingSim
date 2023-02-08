@@ -5,7 +5,6 @@ using FightingSim.Assets.Scripts.Infrastructure.Configs;
 using FightingSim.Assets.Scripts.Player;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -73,7 +72,7 @@ namespace FightingSim.Assets.Scripts.EnemySpawner
             Collider[] hits = Physics.OverlapSphere(origin, _playerCheckOverlapRadius);
             foreach (var hit in hits)
             {
-                if (hit.gameObject.TryGetComponent<PlayerCollisionFacade>(out var _))
+                if (hit.gameObject.TryGetComponent<ICollisionFacade<PlayerFacade>>(out var _))
                 {
                     return true;
                 }

@@ -1,4 +1,5 @@
-﻿using FightingSim.Assets.Scripts.Weapons.WeaponSubcontainer;
+﻿using FightingSim.Assets.Scripts.Infrastructure;
+using FightingSim.Assets.Scripts.Weapons.WeaponSubcontainer;
 using System;
 using UnityEngine;
 using Zenject;
@@ -12,13 +13,17 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
         public void Construct(CurrentStats currentStats)
         {
             _currentStats = currentStats;
+            
         }
 
+        
         private void OnTriggerEnter(Collider collider)
         {
-             if (collider.gameObject.TryGetComponent<WeaponCollider>(out var colliderHandler))
+            if (collider.gameObject.TryGetComponent<ICollisionFacade<Weapon>>(out var weaponColliderFacade))
             {
-                _currentStats.TakeDamage(colliderHandler.Weapon);
+                Weapon weapon = weaponColliderFacade.GetFacade();
+                if(weapon.IsEnemyDamagable) _currentStats.TakeDamage(weapon);
+
             }
         }
     }

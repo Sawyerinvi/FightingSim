@@ -9,7 +9,14 @@ namespace FightingSim.Assets.Scripts.Player
         private readonly MovementStationBehaviour _stationBehaviour;
         private PlayerControl _control;
         private Vector3 _previousMousePosition;
-        
+
+        private float _horizontal;
+        private float _vertical;
+        private Vector3 _mousePosition;
+        public Vector3 MousePosition { get => _mousePosition; private set => _mousePosition = value; }
+        public float Vertical { get => _vertical; private set => _vertical = value; }
+        public float Horizontal { get => _horizontal; private set => _horizontal = value; }
+
         public InputHandler(MovementStationBehaviour stationBehaviour, PlayerControl control)
         {
             _stationBehaviour = stationBehaviour;
@@ -18,17 +25,14 @@ namespace FightingSim.Assets.Scripts.Player
 
         public void FixedTick()
         {
-            var horizontal = Input.GetAxis("Horizontal");
-            var vertical = Input.GetAxis("Vertical");
-            var mousePosition = Input.mousePosition;
+            _horizontal = Input.GetAxis("Horizontal");
+            _vertical = Input.GetAxis("Vertical");
+            _mousePosition = Input.mousePosition;
 
-            _control.Horizontal = horizontal;
-            _control.Vertical = vertical;
-            _control.MousePosition = mousePosition;
 
-            if (horizontal != 0 || vertical != 0 || mousePosition != _previousMousePosition)
+            if (Horizontal != 0 || _vertical != 0 || _mousePosition != _previousMousePosition)
             {
-                _previousMousePosition = mousePosition;
+                _previousMousePosition = _mousePosition;
                 _stationBehaviour.Move();
             }
             else

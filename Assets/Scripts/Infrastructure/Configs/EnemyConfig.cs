@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 namespace FightingSim.Assets.Scripts.Infrastructure.Configs
 {
@@ -11,6 +12,8 @@ namespace FightingSim.Assets.Scripts.Infrastructure.Configs
         [SerializeField] private float _sphereSearchTimer;
         [SerializeField] private float _sphereSearchRadius;
         [SerializeField] private float _attackDistance;
+        [SerializeField] private WeaponData _weapon;
+        [SerializeField] private float _attackAngle;
 
         public float MaxHealth => _maxHealth;
         public GameObject Prefab => _prefab;
@@ -18,5 +21,7 @@ namespace FightingSim.Assets.Scripts.Infrastructure.Configs
         public float OverlapshpereTime => _sphereSearchTimer;
         public float SphereSearchRadius => _sphereSearchRadius;
         public float AttackDistance => _attackDistance;
+        public WeaponData Weapon => _weapon;
+        public float AttackAngle => _attackAngle;
     }
 }

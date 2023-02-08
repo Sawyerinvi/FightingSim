@@ -9,27 +9,24 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy.Animations.States
 {
     class AttackState : EnemyBaseState
     {
-        public AttackState(IEnemyStateSwitcher stateSwitcher, EnemyConfig config, EnemyController animationController) : base(stateSwitcher, config, animationController)
+        public AttackState(IStateSwitcher stateSwitcher, EnemyController enemyController) : base(stateSwitcher, enemyController)
         {
         }
 
+        public override void Move()
+        {
+        }
+        public override void Idle()
+        {
+        }
+        public override void Rotate()
+        {
+        }
         public override void StartAttack()
         {
         }
 
         public override void EndAttack()
-        {
-        }
-
-        public override void MoveToAttack()
-        {
-        }
-
-        public override void Idle()
-        {
-        }
-
-        public override void Roam()
         {
         }
     }

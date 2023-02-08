@@ -12,7 +12,7 @@ namespace FightingSim.Assets.Scripts.Weapons
 
         public Damage()
         {
-            foreach (DamageType type in (DamageType[]) Enum.GetValues(typeof(DamageType)))
+            foreach (DamageType type in (DamageType[])Enum.GetValues(typeof(DamageType)))
             {
                 _collectedDmg.Add(type, 0);
             }

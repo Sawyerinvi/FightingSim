@@ -1,25 +1,24 @@
 ﻿using FightingSim.Assets.Scripts.Infrastructure.Configs;
+using FightingSim.Assets.Scripts.Weapons.WeaponSubcontainer;
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
 {
-    public class EnemyInitializer : IInitializable
+    public class EnemyInitializer
     {
         private readonly DiContainer _container;
         private readonly EnemyConfig _config;
-        private readonly Animator _animator;
+        private readonly Transform _transform;
 
-        public EnemyInitializer(DiContainer container, EnemyConfig config, Animator animator)
+        public EnemyInitializer(DiContainer container, EnemyConfig config, Transform transform)
         {
             _container = container;
             _config = config;
-            _animator = animator;
+            _transform = transform;
+            _container.InstantiatePrefab(_config.Prefab, _transform);
         }
 
-        public void Initialize()
-        {
-            var obj = _container.InstantiatePrefab(_config.Prefab);
-        }
     }
 }

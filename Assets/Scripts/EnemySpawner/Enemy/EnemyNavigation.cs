@@ -15,6 +15,9 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
         private readonly EnemyBehaviourStation _behaviourStation;
         private float _elapsedTime;
 
+        private bool _isPlayerFound;
+        private bool _isFacingPlayer;
+        private bool _isInAttackRange;
         public EnemyNavigation(PlayerFacade player, EnemyConfig config, Transform transform, EnemyBehaviourStation behaviourStation)
         {
             _player = player;
@@ -25,36 +28,72 @@ namespace FightingSim.Assets.Scripts.EnemySpawner.Enemy
 
         public void FixedTick()
         {
-            LookForPlayer();
+            ActionTimer();
+            _isFacingPlayer = RotationCheck();
+            _isInAttackRange = DistanceCheck();
+            Attack();
+            Rotate();
         }
 
-        private void LookForPlayer()
+        private void ActionTimer()
         {
             _elapsedTime += Time.deltaTime;
             if (_elapsedTime < _config.OverlapshpereTime) return;
-            _elapsedTime = 0f;
+
+            _isPlayerFound = LookForPlayer();
+            Move();
+        }
+        
+        private void Attack()
+        {
+            if (_isPlayerFound == false) return;
+            if (_isInAttackRange == false) return;
+            if (_isFacingPlayer == false) return;
+            _behaviourStation.Attack();
+        }
+        private void Move()
+        {
+            if (_isPlayerFound == false) return;
+            if (_isInAttackRange) return;
+            _behaviourStation.Move();
+        }
+        private void Rotate()
+        {
+            if (_isPlayerFound == false) return;
+            if (_isInAttackRange == false) return;
+            if (_isFacingPlayer) return;
+            _behaviourStation.Rotate();
+        }
+        
+        private bool LookForPlayer()
+        {
             Collider[] colliders = Physics.OverlapSphere(_transform.position, _config.SphereSearchRadius);
-            foreach(var collider in colliders)
+            foreach (var collider in colliders)
             {
-                if(collider.gameObject.TryGetComponent<ICollisionFacade<PlayerFacade>>(out _))
+                if (collider.gameObject.TryGetComponent<ICollisionFacade<PlayerFacade>>(out _))
                 {
-                    EnemyAction();
-                    return;
+                    return true;
                 }
             }
-            _behaviourStation.Idle();
+            return false;
         }
-        private void EnemyAction()
+        private bool RotationCheck()
+        {
+            Vector3 direction = (_player.PlayerPosition - _transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+            if (Mathf.Abs(lookRotation.eulerAngles.y - _transform.rotation.eulerAngles.y) >= _config.AttackAngle) return false;
+            return true;
+        }
+        private bool DistanceCheck()
         {
             var distance = Vector3.Distance(_player.PlayerPosition, _transform.position);
-            if(distance <= _config.AttackDistance)
+            if (distance > _config.AttackDistance)
             {
-                _behaviourStation.Attack();
+                return false;
             }
-            else
-            {
-                _behaviourStation.MoveToAttack();
-            }
+            return true;
+
         }
     }
 }

@@ -16,5 +16,7 @@ MonoBehaviour:
   _prefab: {fileID: 380365711117567060, guid: 4b185b9ff3c67f44b97a7d428e4841ef, type: 3}
   _animatorController: {fileID: 9100000, guid: be1309c72877c98439e7b3e74775d789, type: 2}
   _sphereSearchTimer: 0.5
-  _sphereSearchRadius: 4
-  _attackDistance: 0.5
+  _sphereSearchRadius: 5
+  _attackDistance: 1.2
+  _weapon: {fileID: 11400000, guid: 4861f5311aa2f034f9c921157e7e65a9, type: 2}
+  _attackAngle: 15

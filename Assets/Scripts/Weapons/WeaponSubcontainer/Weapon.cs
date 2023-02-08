@@ -12,7 +12,8 @@ namespace FightingSim.Assets.Scripts.Weapons.WeaponSubcontainer
         private IWeaponConfig _weaponData;
 
         public string WeaponName => _name;
-
+        public bool IsPlayerDamagable { get; set; }
+        public bool IsEnemyDamagable { get; set; }
         public Weapon(IWeaponConfig data, Transform transform)
         {
             _weaponData = data;
